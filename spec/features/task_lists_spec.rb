@@ -16,6 +16,15 @@ feature 'Task lists' do
     expect(page).to have_content("Work List")
     expect(page).to have_content("Household Chores")
 
+    #user can edit a task
+
+    first('.task-list').click_link('Edit')
+    # expect(page).to have_content("Household Chores")
+    fill_in "task_list_name", with: "whatever"
+
+    click_button "Edit Task List"
+    expect(page).to have_content "whatever"
+
     #user can add new task lists
 
     click_on "Add Task List"
