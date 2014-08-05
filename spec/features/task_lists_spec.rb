@@ -15,6 +15,11 @@ feature 'Task lists' do
     click_on "Login"
     expect(page).to have_content("Work List")
     expect(page).to have_content("Household Chores")
+
+    #user can add new task lists
+
+    click_on "Add Task List"
+    expect(page).to have_content("Name")
   end
 
 end

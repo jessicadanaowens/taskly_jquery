@@ -1,0 +1,18 @@
+<h1>Add a task list</h1>
+
+<% if @task_list.errors.any? %>
+  <% @task_list.errors.messages[:name].each do |error| %>
+    <%= error %>
+    <% end %>
+  <% end %>
+
+<%= form_for @task_list, url: "/task_lists/new" do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.submit "Create Task List" %>
+  </div>
+<% end %>
+

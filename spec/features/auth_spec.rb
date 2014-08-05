@@ -3,6 +3,12 @@ require 'capybara/rails'
 
 feature 'Auth' do
 
+  scenario 'Users can see the about page' do
+    visit root_path
+    click_on "About"
+    expect(page).to have_content("About")
+  end
+
   scenario 'Users can login and out' do
     create_user email: "user@example.com"
 
