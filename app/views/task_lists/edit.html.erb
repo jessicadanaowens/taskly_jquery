@@ -1,19 +1,19 @@
 <h1>Edit a Task List</h1>
-
-
-
-<%= form_for @task_list, url: update_task_list_path do |f| %>
-  <% f.object.errors.full_messages.each do |error| %>
-    <div class="errors">
+<p class="maroon">
+  <% if @task_list.errors.present? %>
+    <% @task_list.errors.messages[:name].each do |error| %>
       <%= error %>
-    </div>
     <% end %>
-
-  <p>
+  <% end %>
+</p>
+<%= form_for @task_list, html: {class: "create_task_form"} do |f| %>
+  <div>
     <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.submit "Edit Task List" %>
-  </p>
+    <br>
+    <%= f.text_field :name, autofocus: true, value: @task_list.name %>
+  </div>
+  <div>
+    <br>
+    <%= f.submit "Update Task List" %>
+  </div>
 <% end %>
